@@ -5,7 +5,7 @@ let centerY = innerHeight/2
 let playerPos, stanleyImage;
 const playerSpeed = 2
 const tomatoSpeed = 3
-/** This function sets up our sketch. */
+/** This function sets up our sketch. */+
 function setup() {
     createCanvas(innerWidth, innerHeight);
     frameRate(60);
@@ -20,7 +20,7 @@ function fireTomato() {
 
 /** This function redraws the sketch multiple times a second. */
 function draw() {
-    background(255, 255, 250)
+    background(20)
     for (var i = 0; i < tomatoes.length; i ++) {
         let tomato = tomatoes[i]
         if (tomato.x > innerWidth || tomato.x < 0 || tomato.y > innerHeight || tomato.y < 0) {
