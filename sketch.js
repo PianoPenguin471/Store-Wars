@@ -5,7 +5,7 @@ let centerY = innerHeight/2
 let playerPos, stanleyImage;
 const playerSpeed = 2
 const tomatoSpeed = 3
-/** This function sets up our sketch. */
+/** This function sets up the sketch. */
 function setup() {
     createCanvas(innerWidth, innerHeight);
     frameRate(60);
