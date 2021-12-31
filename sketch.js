@@ -51,8 +51,6 @@ function draw() {
  * @param {MouseEvent} event - The `MouseEvent` that is passed as an argument.
  */
 function mousePressed(event) {
-    clicked = true;
-    
     console.log("Clicked")
     fireTomato()
 }
@@ -62,10 +60,10 @@ function mousePressed(event) {
  * @param {MouseEvent} event - The `MouseEvent` that is passed as an argument.
  */
 function mouseReleased(event) {
-    clicked = false;
 }
 
 function keyPressed(event) {
+    console.log(event.code)
     pressedKeys.push(event.code)
 }
 
