@@ -66,12 +66,7 @@ function mouseReleased(event) {
 }
 
 function keyPressed(event) {
-    if (event.code === "Space") {
-        fireTomato()
-    } else {
-        pressedKeys.push(event.code)
-    }
-    
+    pressedKeys.push(event.code)
 }
 
 function keyReleased(event) {
