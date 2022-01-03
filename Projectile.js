@@ -18,3 +18,14 @@ class Projectile {
     }
     
 }
+
+class Tomato extends Projectile {
+    constructor (x, y, velX, velY) {
+        super(x, y, velX, velY, 20)
+        this.image = loadImage("tomato.png")
+    }
+
+    draw() {
+        image(this.image, x - this.image.width/2, y - this.image.height/2)
+    }
+}
