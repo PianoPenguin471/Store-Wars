@@ -31,7 +31,7 @@ function draw() {
         tomato.updatePosition()
         tomato.draw()
     }
-    image(stanleyImage, playerPos.x - stanleyImage.width/2, playerPos.y-stanleyImage.height/2)
+    image(frontImage, playerPos.x - frontImage.width/2, playerPos.y-frontImage.height/2)
     if (pressedKeys.includes("KeyA")) {
         playerPos.x -= playerSpeed
     }
