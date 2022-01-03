@@ -2,7 +2,7 @@ let tomatoes = []
 let pressedKeys = []
 let centerX = innerWidth/2
 let centerY = innerHeight/2
-let playerPos, stanleyImage;
+let playerPos, frontImage;
 const playerSpeed = 2
 const tomatoSpeed = 3
 
@@ -10,7 +10,7 @@ const tomatoSpeed = 3
 function setup() {
     createCanvas(innerWidth, innerHeight);
     frameRate(60);
-    stanleyImage = loadImage("lucas.png");
+    frontImage = loadImage("bobert-front.png");
     playerPos = new p5.Vector(centerX, centerY)
 }
 
