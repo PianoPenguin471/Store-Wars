@@ -1,0 +1,7 @@
+canvas {
+    box-shadow: -1px -1px 20px 6px blue;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+}

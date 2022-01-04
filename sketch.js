@@ -8,16 +8,22 @@ const tomatoSpeed = 3
 
 /** This function sets up the sketch. */
 function setup() {
-    createCanvas(innerWidth - 100, innerHeight - 100);
+    createCanvas(innerWidth - 30, innerHeight - 30);
     frameRate(60);
-    frontImage = loadImage("bobert-front.png");
-    playerPos = new p5.Vector(centerX, centerY)
+    tomatoImage.resize(64, 0)
 }
 
 function fireTomato() {
     direction = new p5.Vector(mouseX - playerPos.x, mouseY - playerPos.y).normalize().mult(tomatoSpeed)
     tomatoes.push(new Tomato(playerPos.x, playerPos.y, direction.x, direction.y))
 }
+
+function preload() {
+    frontImage = loadImage("bobert-front.png");
+    playerPos = new p5.Vector(centerX, centerY)
+    tomatoImage = loadImage("tomato.png");    
+}
+
 
 /** This function redraws the sketch multiple times a second. */
 function draw() {
