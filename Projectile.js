@@ -23,9 +23,11 @@ class Tomato extends Projectile {
     constructor (x, y, velX, velY) {
         super(x, y, velX, velY, 20)
         this.image = loadImage("tomato.png")
+        this.image.resize(2, 2)
     }
 
     draw() {
-        image(this.image, x - this.image.width/2, y - this.image.height/2)
+        this.image.resize(64, 0)
+        image(this.image, this.x - this.image.width/2, this.y - this.image.height/2)
     }
 }
