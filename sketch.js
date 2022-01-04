@@ -2,7 +2,7 @@ let tomatoes = []
 let pressedKeys = []
 let centerX = innerWidth/2
 let centerY = innerHeight/2
-let playerPos, frontImage;
+let , frontImage;
 const playerSpeed = 2
 const tomatoSpeed = 3
 
@@ -20,8 +20,9 @@ function fireTomato() {
 
 function preload() {
     frontImage = loadImage("bobert-front.png");
+    player = new Player(centerX, centerY)
     playerPos = new p5.Vector(centerX, centerY)
-    tomatoImage = loadImage("tomato.png");    
+    tomatoImage = loadImage("tomato.png");
 }
 
 

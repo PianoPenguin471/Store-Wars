@@ -1,8 +1,9 @@
 class GameElement {
-    constructor(x, y) {
+    constructor(x, y, image) {
         this.pos = new p5.Vector(x, y)
         this.x = x
         this.y = y
+        this.image = image
     }
 
     onKey(event) {
@@ -15,7 +16,7 @@ class GameElement {
 let tomatoImage
 class Tomato extends GameElement {
     constructor (x, y, velX, velY) {
-        super(x, y)
+        super(x, y, tomatoImage)
         this.velX = velX
         this.velY = velY
     }
@@ -26,7 +27,12 @@ class Tomato extends GameElement {
         //this.y = this.pos.y
     }
     draw() {
-        image(tomatoImage, this.x - tomatoImage.width/2, this.y - tomatoImage.height/2)
+        image(this.image, this.x - this.image.width/2, this.y - this.image.height/2)
     }
 }
 
+class Player extends GameElement {
+    constructor(x, y) {
+        super(x, y, frontImage)
+    }
+}
