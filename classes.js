@@ -12,6 +12,9 @@ class GameElement {
     onClick(event) {
 
     }
+    onKeyUp(event) {
+
+    }
 }
 
 class Tomato extends GameElement {
@@ -32,19 +35,54 @@ class Tomato extends GameElement {
 }
 
 class Player extends GameElement {
+    direction = "stop"
+    pressedKeys = []
     constructor(x, y) {
         super(x, y, frontImage)
     }
-    if (pressedKeys.includes("KeyA")) {
-        x -= playerSpeed
+
+    onKey(event) {
+        print(event.code)
+        switch (event.code) {
+            case "KeyW":
+                this.direction = "up"
+                this.image = backImage
+                break;
+            case "KeyS":
+                this.direction = "down"
+                this.image = frontImage
+                break;
+            case "KeyD":
+                this.direction = "right"
+                this.image = rightImage
+                break;
+            case "KeyA":
+                this.direction = "left"
+                this.image = leftImage
+                break;
+        }
     }
-    if (pressedKeys.includes("KeyW")) {
-        y -= playerSpeed
+
+    onKeyUp(event) {
+        this.pressedKeys.splice(pressedKeys.indexOf(event.code), 1)
     }
-    if (pressedKeys.includes("KeyS")) {
-        y += playerSpeed
-    }
-    if (pressedKeys.includes("KeyD")) {
-        x += playerSpeed
+
+    draw() {
+        switch (this.direction) {
+            case "up":
+                this.y -= playerSpeed
+                break
+            case "down":
+                this.y += playerSpeed
+                break
+            case "left":
+                this.x -= playerSpeed
+                break
+            case "right":
+                this.x += playerSpeed
+                break
+            
+        }
+        image(this.image, this.x - this.image.width/2, this.y - this.image.width)
     }
 }

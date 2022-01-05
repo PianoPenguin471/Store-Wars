@@ -1,30 +1,37 @@
 let tomatoes = []
 let pressedKeys = []
+var today = new Date()
+var isWinter = today.getMonth() <= 4
 let centerX = innerWidth/2
 let centerY = innerHeight/2
-let frontImage;
+let frontImage, backImage, leftImage, rightImage;
 const playerSpeed = 2
 const tomatoSpeed = 3
-let player, tomatoImage
+var player, tomatoImage
+
+function preload() {
+    var characterName = isWinter ? "barry" : "bobert"
+    frontImage = loadImage(`assets/${characterName}-front.png`);
+    backImage = loadImage(`assets/${characterName}-back.png`);
+    leftImage = loadImage(`assets/${characterName}-left.png`);
+    rightImage = loadImage(`assets/${characterName}-right.png`);
+    player = new Player(centerX, centerY)
+    print(player)
+    tomatoImage = loadImage("assets/tomato.png");
+}
 
 /** This function sets up the sketch. */
 function setup() {
     createCanvas(innerWidth - 30, innerHeight - 30);
     frameRate(60);
-    tomatoImage.resize(64, 0)
 }
 
 function fireTomato() {
-    direction = new p5.Vector(mouseX - playerPos.x, mouseY - playerPos.y).normalize().mult(tomatoSpeed)
-    tomatoes.push(new Tomato(playerPos.x, playerPos.y, direction.x, direction.y))
+    direction = new p5.Vector(mouseX - player.x, mouseY - player.y).normalize().mult(tomatoSpeed)
+    tomatoes.push(new Tomato(player.x, player.y, direction.x, direction.y))
 }
 
-function preload() {
-    frontImage = loadImage("bobert-front.png");
-    player = new Player(centerX, centerY)
-    playerPos = new p5.Vector(centerX, centerY)
-    tomatoImage = loadImage("tomato.png");
-}
+
 
 
 /** This function redraws the sketch multiple times a second. */
@@ -39,8 +46,7 @@ function draw() {
         tomato.updatePosition()
         tomato.draw()
     }
-    image(frontImage, playerPos.x - frontImage.width/2, playerPos.y-frontImage.height/2)
-    
+    player.draw()
 }
 
 /**
@@ -61,13 +67,13 @@ function mouseReleased(event) {
 }
 
 function keyPressed(event) {
-    console.log(event.code)
     pressedKeys.push(event.code)
     if (event.code === "Space") {
         fireTomato()
     }
+    player.onKey(event)
 }
 
 function keyReleased(event) {
-    pressedKeys.splice(pressedKeys.indexOf(event.code), 1)
+    player.onKeyUp(event)
 }
