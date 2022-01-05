@@ -13,7 +13,7 @@ class GameElement {
 
     }
 }
-let tomatoImage
+
 class Tomato extends GameElement {
     constructor (x, y, velX, velY) {
         super(x, y, tomatoImage)
@@ -34,5 +34,17 @@ class Tomato extends GameElement {
 class Player extends GameElement {
     constructor(x, y) {
         super(x, y, frontImage)
+    }
+    if (pressedKeys.includes("KeyA")) {
+        x -= playerSpeed
+    }
+    if (pressedKeys.includes("KeyW")) {
+        y -= playerSpeed
+    }
+    if (pressedKeys.includes("KeyS")) {
+        y += playerSpeed
+    }
+    if (pressedKeys.includes("KeyD")) {
+        x += playerSpeed
     }
 }

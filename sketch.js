@@ -2,9 +2,10 @@ let tomatoes = []
 let pressedKeys = []
 let centerX = innerWidth/2
 let centerY = innerHeight/2
-let , frontImage;
+let frontImage;
 const playerSpeed = 2
 const tomatoSpeed = 3
+let player, tomatoImage
 
 /** This function sets up the sketch. */
 function setup() {
@@ -39,18 +40,7 @@ function draw() {
         tomato.draw()
     }
     image(frontImage, playerPos.x - frontImage.width/2, playerPos.y-frontImage.height/2)
-    if (pressedKeys.includes("KeyA")) {
-        playerPos.x -= playerSpeed
-    }
-    if (pressedKeys.includes("KeyW")) {
-        playerPos.y -= playerSpeed
-    }
-    if (pressedKeys.includes("KeyS")) {
-        playerPos.y += playerSpeed
-    }
-    if (pressedKeys.includes("KeyD")) {
-        playerPos.x += playerSpeed
-    }
+    
 }
 
 /**
@@ -60,6 +50,7 @@ function draw() {
 function mousePressed(event) {
     console.log("Clicked")
     fireTomato()
+    player.onClick(event)
 }
 
 /**
