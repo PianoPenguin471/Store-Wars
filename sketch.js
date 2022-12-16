@@ -1,4 +1,5 @@
 let tomatoes = []
+let walls = []
 let pressedKeys = []
 var today = new Date()
 var isWinter = today.getMonth() <= 4
@@ -18,6 +19,14 @@ function preload() {
     player = new Player(centerX, centerY)
     print(player)
     tomatoImage = loadImage("assets/tomato.png");
+    for(var i=0;i<5;i++) {
+        walls.push(new Wall(getRandomInt(innerWidth), getRandomInt(innerHeight), 200, 10))
+    }
+    alert(JSON.stringify(walls[0]))
+}
+
+function getRandomInt(max) {
+  return Math.floor(Math.random() * max);
 }
 
 /** This function sets up the sketch. */
@@ -47,6 +56,7 @@ function draw() {
         tomato.draw()
     }
     player.draw()
+    walls.forEach(wall => wall.draw())
 }
 
 /**

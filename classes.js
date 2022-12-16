@@ -1,8 +1,6 @@
 class GameElement {
     constructor(x, y, image) {
         this.pos = new p5.Vector(x, y)
-        this.x = x
-        this.y = y
         this.image = image
     }
 
@@ -24,13 +22,13 @@ class Tomato extends GameElement {
         this.velY = velY
     }
     updatePosition() {
-        this.x += this.velX
-        this.y += this.velY
+        this.pos.x += this.velX
+        this.pos.y += this.velY
         //this.pos.x = this.x
         //this.y = this.pos.y
     }
     draw() {
-        image(this.image, this.x - this.image.width/2, this.y - this.image.height/2)
+        image(this.image, this.pos.x - this.image.width/2, this.pos.y - this.image.height/2)
     }
 }
 
@@ -70,19 +68,30 @@ class Player extends GameElement {
     draw() {
         switch (this.direction) {
             case "up":
-                this.y -= playerSpeed
+                this.pos.y-= playerSpeed
                 break
             case "down":
-                this.y += playerSpeed
+                this.pos.y += playerSpeed
                 break
             case "left":
-                this.x -= playerSpeed
+                this.pos.x -= playerSpeed
                 break
             case "right":
-                this.x += playerSpeed
+                this.pos.x += playerSpeed
                 break
             
         }
-        image(this.image, this.x - this.image.width/2, this.y - this.image.width)
+        image(this.image, this.pos.x - this.image.width/2, this.pos.y, this.image.width)
+    }
+}
+
+class Wall extends GameElement {
+    constructor(x, y, width, height) {
+        super(x, y, null)
+        this.width = width
+        this.height = height;
+    }
+    draw() {
+        rect(this.pos.x, this.pos.y, this.width, this.height)
     }
 }
